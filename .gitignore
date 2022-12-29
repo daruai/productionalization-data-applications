@@ -45,3 +45,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage
+
+mlruns/
+mlflow-docker-compose/
+tmp/
