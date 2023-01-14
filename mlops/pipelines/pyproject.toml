@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pipelines"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Ruiz <danielruizriquelme@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.9.0"
+ipykernel = "^6.20.1"
+metaflow = "^2.7.18"
+optuna = "^3.0.5"
+mlflow = "^2.1.1"
+mlopshelpers = {path = "/mnt/c/Users/danie/Documents/GITS/mlopshelpers", develop = true}
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.20.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
