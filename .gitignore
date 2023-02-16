@@ -49,3 +49,5 @@ coverage
 mlruns/
 mlflow-docker-compose/
 tmp/
+
+.metaflow/
