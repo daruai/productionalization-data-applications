@@ -51,3 +51,4 @@ mlflow-docker-compose/
 tmp/
 
 .metaflow/
+mlops/pipelines/airflow-docker/logs/
