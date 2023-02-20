@@ -16,14 +16,16 @@ from pydantic import BaseModel
 # The model is a simple dictionary with 4 float fields: sepal_length, sepal_width, petal_length, petal_width
 
 class IrisData(BaseModel):
-    # TODO: WRITE YOUR CODE HERE
-    pass
-
+    sepal_length: float
+    sepal_width: float
+    petal_length: float
+    petal_width: float
     
 # 2. Load the model
 # The model is a serialized scikit-learn model
 
-# TODO: WRITE YOUR CODE HERE
+with open('../../model.pkl', 'rb') as f:
+    model = joblib.load(f)
     
 
 app = FastAPI()
@@ -37,8 +39,7 @@ async def root():
 
 @app.get("/health")
 async def health():
-    # TODO: WRITE YOUR CODE HERE
-    pass
+    return {"status": "ok"}
 
 # 4. Create the prediction endpoint
 # The prediction endpoint is used to get predictions from the model
@@ -46,11 +47,23 @@ async def health():
 # HINT: fastapi expects to send a json object as output, so you need to convert the prediction to json format
 # See https://fastapi.tiangolo.com/tutorial/response-model/
 
+class Output(BaseModel):
+    prediction: int
+        
 @app.post("/predict")
 async def predict(data: IrisData):
-    # TODO: WRITE YOUR CODE HERE
+    data = data.dict()
+    sepal_length = data['sepal_length']
+    sepal_width = data['sepal_width']
+    petal_length = data['petal_length']
+    petal_width = data['petal_width']
+    
+    y_pred = model.predict([[sepal_length, sepal_width, petal_length, petal_width]])[0]
+    prediction = {
+                    'prediction': y_pred
+                }
 
-    return None
+    return Output(**prediction)
     
     
 # Example request:
