@@ -11,6 +11,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 # Load the iris dataset
 iris = load_iris()
+print(iris.feature_names)
+
 X = iris.data
 y = iris.target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
