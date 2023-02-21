@@ -24,7 +24,7 @@ class IrisData(BaseModel):
 # 2. Load the model
 # The model is a serialized scikit-learn model
 
-with open('../model.pkl', 'rb') as f:
+with open('model.pkl', 'rb') as f:
     model = joblib.load(f)
     
 
